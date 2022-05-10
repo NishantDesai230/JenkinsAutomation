@@ -35,4 +35,14 @@ class DemoApplicationTests {
 		Assertions.assertEquals(s,"hello nishant");
 	}
 
+	@Test
+	public void negetiveTest() throws Exception {
+		MvcResult mvcResult = mockMvc.perform(get("/hello/nishant"))
+				.andExpect(status().isOk())
+				.andReturn();
+
+		String s = mvcResult.getResponse().getContentAsString();
+		Assertions.assertNotEquals(s,"hello nishant desai");
+	}
+
 }
